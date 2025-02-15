@@ -31,7 +31,7 @@ const HomePage = () => {
         repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)); //descending, recent first
 
         setRepos(repos);
-
+        setCommits(commitCounts);
         setUserProfile(userProfile);
 
         return { userProfile, repos, commitCounts };
@@ -87,7 +87,7 @@ const HomePage = () => {
           <GraphContainer
             className="w-full"
             data={repos}
-            commitCounts={commitCounts}
+            commitCounts={commits}
           />
         )}
         {loading && <Spinner />}
