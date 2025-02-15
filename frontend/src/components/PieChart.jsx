@@ -16,7 +16,7 @@ const COLORS = [
   "#f59e0b",
 ];
 
-const PieChart = (data = { stars, forks, repos }) => {
+const PieVariant = (data = { stars, forks, repos }) => {
   return (
     <ResponsiveContainer width="100%" height={350}>
       <PieChart>
@@ -77,4 +77,4 @@ const PieChart = (data = { stars, forks, repos }) => {
   );
 };
 
-export default PieChart;
+export default PieVariant;

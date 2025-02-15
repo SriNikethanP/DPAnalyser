@@ -1,9 +1,9 @@
 import { useState } from "react";
-import BarChart from "./BarChart";
-import PieChart from "./PieChart";
-import RadialChart from "./RadialChart";
+import BarVariant from "./BarChart";
+import PieVariant from "./PieChart";
+import RadialVariant from "./RadialChart";
 
-export const GraphContainer = ({ stars, forks,repos }) => {
+export const GraphContainer = ({ stars, forks, repos }) => {
   const [selectedChart, setSelectedChart] = useState("bar");
 
   return (
@@ -25,9 +25,15 @@ export const GraphContainer = ({ stars, forks,repos }) => {
 
       {/* Chart Display */}
       <div className="bg-gray-100 p-4 rounded-lg max-h-[360px] overflow-auto">
-        {selectedChart === "bar" && <BarChart stars={stars} forks={forks} repos={repos} />}
-        {selectedChart === "pie" && <PieChart stars={stars} forks={forks} repos={repos} />}
-        {selectedChart === "radial" && <RadialChart  stars={stars} forks={forks} repos={repos} />}
+        {selectedChart === "bar" && (
+          <BarVariant stars={stars} forks={forks} repos={repos} />
+        )}
+        {selectedChart === "pie" && (
+          <PieVariant stars={stars} forks={forks} repos={repos} />
+        )}
+        {selectedChart === "radial" && (
+          <RadialVariant stars={stars} forks={forks} repos={repos} />
+        )}
       </div>
     </div>
   );

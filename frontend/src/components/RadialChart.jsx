@@ -14,7 +14,7 @@ const COLORS = [
   "#f59e0b",
 ];
 
-const RadialChart = (data = { stars, forks, repos }) => {
+const RadialVariant = (data = { stars, forks, repos }) => {
   return (
     <ResponsiveContainer width="100%" height={350}>
       <RadialBarChart
@@ -69,4 +69,4 @@ const RadialChart = (data = { stars, forks, repos }) => {
   );
 };
 
-export default RadialChart;
+export default RadialVariant;

@@ -7,7 +7,7 @@ import {
   Tooltip,
 } from "recharts";
 
-const BarChart = (data = { stars, forks, repos }) => {
+const BarVariant = (data = { stars, forks, repos }) => {
   return (
     <ResponsiveContainer width="100%" height={350}>
       <BarChart data={data}>
@@ -31,4 +31,4 @@ const BarChart = (data = { stars, forks, repos }) => {
   );
 };
 
-export default BarChart;
+export default BarVariant;
