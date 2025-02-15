@@ -75,8 +75,8 @@ const HomePage = () => {
   return (
     <div className="m-4">
       <Search onSearch={onSearch} />
-      {repos.length > 0 && <SortRepos onSort={onSort} sortType={sortType} />}
-      <div className="flex gap-4 flex-col lg:flex-row justify-center items-start">
+      {/* {repos.length > 0 && <SortRepos onSort={onSort} sortType={sortType} />} */}
+      <div className="flex gap-4 flex-col justify-start items-start ml-2">
         {userProfile && !loading && <ProfileInfo userProfile={userProfile} />}
 
         {!loading && <Repos repos={repos} />}
