@@ -16,7 +16,23 @@ const COLORS = [
   "#f59e0b",
 ];
 
-const PieVariant = ({data}) => {
+const PieVariant = ({ data }) => {
+  const aggregatedData = data.reduce(
+    (acc, repo) => {
+      acc.stargazers_count += repo.stargazers_count;
+      acc.forks_count += repo.forks_count;
+      acc.open_issues_count += repo.open_issues_count;
+      acc.watchers_count += repo.watchers_count;
+      return acc;
+    },
+    {
+      period: "Total",
+      stargazers_count: 0,
+      forks_count: 0,
+      open_issues_count: 0,
+      watchers_count: 0,
+    }
+  );
   return (
     <ResponsiveContainer width="100%" height={350}>
       <PieChart>
@@ -58,7 +74,7 @@ const PieVariant = ({data}) => {
         />
         <Tooltip />
         <Pie
-          data={data}
+          data={[aggregatedData]}
           cx="50%"
           cy="50%"
           labelLine={false}

@@ -30,8 +30,7 @@ const HomePage = () => {
         repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)); //descending, recent first
 
         setRepos(repos);
-        // setStars(stars);
-        // setForks(forks);
+
         setUserProfile(userProfile);
 
         return { userProfile, repos, stars, forks };
@@ -83,7 +82,7 @@ const HomePage = () => {
         {userProfile && !loading && <ProfileInfo userProfile={userProfile} />}
 
         {!loading && <Repos repos={repos} />}
-        {!loading && <GraphContainer className="w-1/3" data={repos} />}
+        {!loading && <GraphContainer className="w-full" data={repos} />}
         {loading && <Spinner />}
       </div>
     </div>

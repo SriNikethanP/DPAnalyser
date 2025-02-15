@@ -15,6 +15,22 @@ const COLORS = [
 ];
 
 const RadialVariant = ({ data }) => {
+  const aggregatedData = data.reduce(
+    (acc, repo) => {
+      acc.stargazers_count += repo.stargazers_count;
+      acc.forks_count += repo.forks_count;
+      acc.open_issues_count += repo.open_issues_count;
+      acc.watchers_count += repo.watchers_count;
+      return acc;
+    },
+    {
+      period: "Total",
+      stargazers_count: 0,
+      forks_count: 0,
+      open_issues_count: 0,
+      watchers_count: 0,
+    }
+  );
   return (
     <ResponsiveContainer width="100%" height={350}>
       <RadialBarChart
@@ -23,7 +39,7 @@ const RadialVariant = ({ data }) => {
         innerRadius="30%"
         outerRadius="90%"
         barSize={10}
-        data={data.map((item, index) => ({
+        data={[aggregatedData].map((item, index) => ({
           ...item,
           fill: COLORS[index % COLORS.length],
         }))}

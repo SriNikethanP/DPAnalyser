@@ -24,7 +24,7 @@ export const GraphContainer = ({ data }) => {
       </div>
 
       {/* Chart Display */}
-      <div className="bg-gray-100 p-4 rounded-lg max-h-[360px] overflow-auto">
+      <div className="bg-gray-100 p-4 rounded-lg ">
         {selectedChart === "bar" && <BarVariant data={data} />}
         {selectedChart === "pie" && <PieVariant data={data} />}
         {selectedChart === "radial" && <RadialVariant data={data} />}
