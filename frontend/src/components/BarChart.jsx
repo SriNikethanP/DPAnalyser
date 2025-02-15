@@ -11,22 +11,18 @@ const BarVariant = ({ data }) => {
   // Aggregate data across all repositories
   const aggregatedData = data.reduce(
     (acc, repo) => {
-      acc.commits += repo.commits || 0;
-      acc.merges += repo.merges || 0;
-      acc.repoEngagement += repo.repoEngagement || 0;
-      acc.requestedChanges += repo.requestedChanges || 0;
-      acc.bugsFixed += repo.bugsFixed || 0;
-      acc.issuesSolved += repo.issuesSolved || 0;
+      acc.stargazers_count += repo.stargazers_count || 0;
+      acc.forks_count += repo.forks_count || 0;
+      acc.open_issues_count += repo.open_issues_count || 0;
+      acc.watchers_count += repo.watchers_count || 0;
       return acc;
     },
     {
       period: "Total",
-      commits: 0,
-      merges: 0,
-      repoEngagement: 0,
-      requestedChanges: 0,
-      bugsFixed: 0,
-      issuesSolved: 0,
+      stargazers_count: 0,
+      forks_count: 0,
+      open_issues_count: 0,
+      watchers_count: 0,
     }
   );
 
@@ -42,12 +38,10 @@ const BarVariant = ({ data }) => {
           tickMargin={16}
         />
         <Tooltip />
-        <Bar dataKey="commits" fill="#3b82f6" />
-        <Bar dataKey="merges" fill="#f43f5e" />
-        <Bar dataKey="repoEngagement" fill="#22c55e" />
-        <Bar dataKey="requestedChanges" fill="#f59e0b" />
-        <Bar dataKey="bugsFixed" fill="#6366f1" />
-        <Bar dataKey="issuesSolved" fill="#ec4899" />
+        <Bar dataKey="stargazers_count" fill="#3b82f6" />
+        <Bar dataKey="forks_count" fill="#f43f5e" />
+        <Bar dataKey="open_issues_count" fill="#22c55e" />
+        <Bar dataKey="watchers_count" fill="#f59e0b" />
       </BarChart>
     </ResponsiveContainer>
   );
