@@ -15,7 +15,7 @@ const Search = ({ onSearch }) => {
       >
         Search
       </label>
-      <div className="relative border-2 border-white p-4 ">
+      <div className="relative">
         <div className="absolute inset-y-0 start-0 flex items-center z-10 ps-3 pointer-events-none">
           <IoSearch className="w-5 h-5" />
         </div>
