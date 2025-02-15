@@ -11,10 +11,10 @@ const BarVariant = ({ data }) => {
   // Aggregate data across all repositories
   const aggregatedData = data.reduce(
     (acc, repo) => {
-      acc.stargazers_count += repo.stargazers_count || 0;
-      acc.forks_count += repo.forks_count || 0;
-      acc.open_issues_count += repo.open_issues_count || 0;
-      acc.watchers_count += repo.watchers_count || 0;
+      acc.stargazers_count += repo.stargazers_count ;
+      acc.forks_count += repo.forks_count ;
+      acc.open_issues_count += repo.open_issues_count ;
+      acc.watchers_count += repo.watchers_count ;
       return acc;
     },
     {

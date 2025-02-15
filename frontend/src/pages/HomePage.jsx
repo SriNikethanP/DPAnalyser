@@ -83,7 +83,7 @@ const HomePage = () => {
         {userProfile && !loading && <ProfileInfo userProfile={userProfile} />}
 
         {!loading && <Repos repos={repos} />}
-        {!loading && <GraphContainer data={repos} />}
+        {!loading && <GraphContainer className="w-1/3" data={repos} />}
         {loading && <Spinner />}
       </div>
     </div>
