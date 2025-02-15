@@ -28,11 +28,13 @@ const RadialVariant = ({ data, commitCounts }) => {
       stargazers_count: 0,
       forks_count: 0,
       open_issues_count: 0,
-        watchers_count: 0,
+      watchers_count: 0,
       total_commits: 0,
     }
   );
-  aggregatedData.total_commits = commitCounts;
+  aggregatedData.total_commits = commitCounts
+    .split("~") // Split the string into an array
+    .reduce((sum, count) => sum + Number(count), 0);
 
   return (
     <ResponsiveContainer width="100%" height={350}>

@@ -22,12 +22,14 @@ const BarVariant = ({ data, commitCounts }) => {
       stargazers_count: 0,
       forks_count: 0,
       open_issues_count: 0,
-        watchers_count: 0,
+      watchers_count: 0,
       total_commits: 0,
     }
   );
 
-  aggregatedData.total_commits = commitCounts;
+  aggregatedData.total_commits = commitCounts
+    .split("~") // Split the string into an array
+    .reduce((sum, count) => sum + Number(count), 0);
 
   return (
     <ResponsiveContainer width="100%" height={350}>
@@ -44,10 +46,8 @@ const BarVariant = ({ data, commitCounts }) => {
         <Bar dataKey="stargazers_count" fill="#3b82f6" />
         <Bar dataKey="forks_count" fill="#f43f5e" />
         <Bar dataKey="open_issues_count" fill="#22c55e" />
-              <Bar dataKey="watchers_count" fill="#f59e0b" />
-              <Bar 
-                  dataKey="total_commits" fill="#f24832"
-              />
+        <Bar dataKey="watchers_count" fill="#f59e0b" />
+        <Bar dataKey="total_commits" fill="#f24832" />
       </BarChart>
     </ResponsiveContainer>
   );
