@@ -8,9 +8,31 @@ import {
 } from "recharts";
 
 const BarVariant = ({ data }) => {
+  // Aggregate data across all repositories
+  const aggregatedData = data.reduce(
+    (acc, repo) => {
+      acc.commits += repo.commits || 0;
+      acc.merges += repo.merges || 0;
+      acc.repoEngagement += repo.repoEngagement || 0;
+      acc.requestedChanges += repo.requestedChanges || 0;
+      acc.bugsFixed += repo.bugsFixed || 0;
+      acc.issuesSolved += repo.issuesSolved || 0;
+      return acc;
+    },
+    {
+      period: "Total",
+      commits: 0,
+      merges: 0,
+      repoEngagement: 0,
+      requestedChanges: 0,
+      bugsFixed: 0,
+      issuesSolved: 0,
+    }
+  );
+
   return (
     <ResponsiveContainer width="100%" height={350}>
-      <BarChart data={data}>
+      <BarChart data={[aggregatedData]}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis
           axisLine={false}

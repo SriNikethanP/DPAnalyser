@@ -12,8 +12,7 @@ const HomePage = () => {
   const [userProfile, setUserProfile] = useState(null);
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(false);
-  // const [stars, setStars] = useState(0);
-  // const [forks, setForks] = useState(0);
+
   const [sortType, setSortType] = useState("recent");
 
   const getUserProfileAndRepos = useCallback(
