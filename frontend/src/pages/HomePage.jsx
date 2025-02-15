@@ -6,12 +6,14 @@ import Repos from "../components/Repos";
 import Search from "../components/Search";
 import SortRepos from "../components/SortRepos";
 import Spinner from "../components/Spinner";
+import { GraphContainer } from "../components/GraphContainer";
 
 const HomePage = () => {
   const [userProfile, setUserProfile] = useState(null);
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const [stars, setStars] = useState(0);
+  const [forks, setForks] = useState(0);
   const [sortType, setSortType] = useState("recent");
 
   const getUserProfileAndRepos = useCallback(
@@ -24,14 +26,16 @@ const HomePage = () => {
         }
 
         const res = await fetch(`/api/users/profile/${username}`);
-        const { repos, userProfile } = await res.json();
+        const { repos, userProfile, stars, forks } = await res.json();
 
         repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)); //descending, recent first
 
         setRepos(repos);
+        setStars(stars);
+        setForks(forks);
         setUserProfile(userProfile);
 
-        return { userProfile, repos };
+        return { userProfile, repos, stars, forks };
       } catch (error) {
         toast.error(error.message);
       } finally {
@@ -80,6 +84,9 @@ const HomePage = () => {
         {userProfile && !loading && <ProfileInfo userProfile={userProfile} />}
 
         {!loading && <Repos repos={repos} />}
+        {!loading && (
+          <GraphContainer stars={stars} forks={forks} repos={repos} />
+        )}
         {loading && <Spinner />}
       </div>
     </div>

@@ -1,17 +1,12 @@
 async function fetchGitHubStats(username) {
-  let totalStars = 0;
-  let totalForks = 0;
+  let stars = 0;
+  let forks = 0;
   let page = 1;
   let hasMore = true;
 
   while (hasMore) {
     const response = await fetch(
-      `https://api.github.com/users/${username}/repos?per_page=100&page=${page}`,
-      {
-        headers: {
-          authorization: `token ${process.env.GITHUB_API_KEY}`,
-        },
-      }
+      `https://api.github.com/users/${username}/repos?per_page=100&page=${page}`
     );
     const repos = await response.json();
 
@@ -26,5 +21,6 @@ async function fetchGitHubStats(username) {
     page++;
   }
 
-  return { totalStars, totalForks };
+
+  return { stars, forks };
 }
