@@ -17,7 +17,7 @@ function App() {
   if (loading) return null;
 
   return (
-    <div className="flex bg-gray-500 ">
+    <div className="flex ">
       <Sidebar />
       <div className="max-w-6xl my-5 text-white mx-2 transition-all duration-300 flex-1">
         <Routes>
