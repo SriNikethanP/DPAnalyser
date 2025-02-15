@@ -85,7 +85,7 @@ const HomePage = () => {
         {!loading && <Repos repos={repos} />}
         {!loading && (
           <GraphContainer
-            className="w-full"
+            className="w-[500px]"
             data={repos}
             commitCounts={commits}
           />

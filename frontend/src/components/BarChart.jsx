@@ -27,9 +27,9 @@ const BarVariant = ({ data, commitCounts }) => {
     }
   );
 
-  aggregatedData.total_commits = commitCounts
-    .split("~") // Split the string into an array
-    .reduce((sum, count) => sum + Number(count), 0);
+    aggregatedData.total_commits = commitCounts;
+    // .split("~") // Split the string into an array
+    // .reduce((sum, count) => sum + Number(count), 0);
 
   return (
     <ResponsiveContainer width="100%" height={350}>
