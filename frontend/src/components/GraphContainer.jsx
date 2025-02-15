@@ -7,7 +7,7 @@ export const GraphContainer = ({ data, commitCounts }) => {
   const [selectedChart, setSelectedChart] = useState("bar");
 
   return (
-    <div className="max-w-5xl mx-auto p-4 ">
+    <div className="w-full mx-auto p-4 ">
       {/* Heading & Dropdown */}
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-semibold">GitHub Analysis</h2>
