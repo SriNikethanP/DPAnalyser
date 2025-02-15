@@ -12,6 +12,7 @@ const HomePage = () => {
   const [userProfile, setUserProfile] = useState(null);
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [commits, setCommits] = useState(0);
 
   const [sortType, setSortType] = useState("recent");
 
@@ -25,7 +26,7 @@ const HomePage = () => {
         }
 
         const res = await fetch(`/api/users/profile/${username}`);
-        const { repos, userProfile, stars, forks } = await res.json();
+        const { repos, userProfile, commitCounts } = await res.json();
 
         repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)); //descending, recent first
 
@@ -33,7 +34,7 @@ const HomePage = () => {
 
         setUserProfile(userProfile);
 
-        return { userProfile, repos, stars, forks };
+        return { userProfile, repos, commitCounts };
       } catch (error) {
         toast.error(error.message);
       } finally {
@@ -82,7 +83,13 @@ const HomePage = () => {
         {userProfile && !loading && <ProfileInfo userProfile={userProfile} />}
 
         {!loading && <Repos repos={repos} />}
-        {!loading && <GraphContainer className="w-full" data={repos} />}
+        {!loading && (
+          <GraphContainer
+            className="w-full"
+            data={repos}
+            commitCounts={commitCounts}
+          />
+        )}
         {loading && <Spinner />}
       </div>
     </div>

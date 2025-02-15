@@ -3,11 +3,12 @@ import BarVariant from "./BarChart";
 import PieVariant from "./PieChart";
 import RadialVariant from "./RadialChart";
 
-export const GraphContainer = ({ data }) => {
+export const GraphContainer = ({ data, commitCounts }) => {
   const [selectedChart, setSelectedChart] = useState("bar");
+  
 
   return (
-    <div className="max-w-3xl mx-auto p-4">
+    <div className="max-w-5xl mx-auto p-4">
       {/* Heading & Dropdown */}
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-semibold">GitHub Analysis</h2>
@@ -24,10 +25,10 @@ export const GraphContainer = ({ data }) => {
       </div>
 
       {/* Chart Display */}
-      <div className="bg-gray-100 p-4 rounded-lg ">
-        {selectedChart === "bar" && <BarVariant data={data} />}
-        {selectedChart === "pie" && <PieVariant data={data} />}
-        {selectedChart === "radial" && <RadialVariant data={data} />}
+      <div className="bg-gray-100 p-4 rounded-lg w-full">
+        {selectedChart === "bar" && <BarVariant data={data} commitCounts={commitCounts} />}
+        {selectedChart === "pie" && <PieVariant data={data} commitCounts={commitCounts} />}
+        {selectedChart === "radial" && <RadialVariant data={data} commitCounts={commitCounts} />}
       </div>
     </div>
   );

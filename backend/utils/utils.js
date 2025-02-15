@@ -1,30 +1,27 @@
-// async function fetchGitHubStats(username) {
-//   let totalStars = 0;
-//   let totalForks = 0;
-//   let page = 1;
-//   let hasMore = true;
+// export const getTotalCommits = async (username) => {
+//   const reposResponse = await fetch(
+//     `https://api.github.com/users/${username}/repos`
+//   );
+//   const repos = await reposResponse.json();
 
-//   while (hasMore) {
-//     const response = await fetch(
-//       `https://api.github.com/users/${username}/repos?per_page=100&page=${page}`,
-//       {
-//         headers: {
-//           authorization: `token ${process.env.GITHUB_API_KEY}`,
-//         },
+//   const commitCounts = await Promise.all(
+//     repos.map(async (repo) => {
+//       const commitsResponse = await fetch(
+//         `https://api.github.com/repos/${username}/${repo.name}/commits?per_page=1`
+//       );
+
+//       const linkHeader = commitsResponse.headers.get("Link");
+//       let totalCommits = 0;
+
+//       if (linkHeader) {
+//         const match = linkHeader.match(/&page=(\d+)>; rel="last"/);
+//         totalCommits = match ? parseInt(match[1], 10) : 1;
+//       } else {
+//         const commits = await commitsResponse.json();
+//         totalCommits = commits.length;
 //       }
-//     );
-//     const repos = await response.json();
 
-//     if (repos.length === 0) {
-//       hasMore = false;
-//       break;
-//     }
-
-//     totalStars += repos.reduce((acc, repo) => acc + repo.stargazers_count, 0);
-//     totalForks += repos.reduce((acc, repo) => acc + repo.forks_count, 0);
-
-//     page++;
-//   }
-
-//   return { totalStars, totalForks };
-// }
+//       return { repo: repo.name, commits: totalCommits };
+//     })
+//   );
+// };

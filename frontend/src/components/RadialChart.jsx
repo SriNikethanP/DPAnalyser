@@ -14,7 +14,7 @@ const COLORS = [
   "#f59e0b",
 ];
 
-const RadialVariant = ({ data }) => {
+const RadialVariant = ({ data, commitCounts }) => {
   const aggregatedData = data.reduce(
     (acc, repo) => {
       acc.stargazers_count += repo.stargazers_count;
@@ -31,6 +31,8 @@ const RadialVariant = ({ data }) => {
       watchers_count: 0,
     }
   );
+  aggregatedData.total_commits = commitCounts;
+
   return (
     <ResponsiveContainer width="100%" height={350}>
       <RadialBarChart
