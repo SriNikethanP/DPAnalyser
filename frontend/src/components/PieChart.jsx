@@ -30,7 +30,8 @@ const PieVariant = ({ data, commitCounts }) => {
       stargazers_count: 0,
       forks_count: 0,
       open_issues_count: 0,
-      watchers_count: 0,
+        watchers_count: 0,
+        total_commits: 0,
     }
     );
       aggregatedData.total_commits = commitCounts;
