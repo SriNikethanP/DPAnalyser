@@ -13,13 +13,12 @@ passport.deserializeUser(function (obj, done) {
   done(null, obj);
 });
 
-
 passport.use(
   new GitHubStrategy(
     {
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: "https://findev-q050.onrender.com/api/auth/github/callback",
+      callbackURL: "https://dpanalyser.onrender.com/api/auth/github/callback",
     },
     async function (accessToken, refreshToken, profile, done) {
       const user = await User.findOne({ username: profile.username });
