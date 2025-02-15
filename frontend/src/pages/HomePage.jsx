@@ -12,8 +12,8 @@ const HomePage = () => {
   const [userProfile, setUserProfile] = useState(null);
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [stars, setStars] = useState(0);
-  const [forks, setForks] = useState(0);
+  // const [stars, setStars] = useState(0);
+  // const [forks, setForks] = useState(0);
   const [sortType, setSortType] = useState("recent");
 
   const getUserProfileAndRepos = useCallback(
@@ -31,8 +31,8 @@ const HomePage = () => {
         repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)); //descending, recent first
 
         setRepos(repos);
-        setStars(stars);
-        setForks(forks);
+        // setStars(stars);
+        // setForks(forks);
         setUserProfile(userProfile);
 
         return { userProfile, repos, stars, forks };
@@ -84,9 +84,7 @@ const HomePage = () => {
         {userProfile && !loading && <ProfileInfo userProfile={userProfile} />}
 
         {!loading && <Repos repos={repos} />}
-        {!loading && (
-          <GraphContainer stars={stars} forks={forks} repos={repos} />
-        )}
+        {!loading && <GraphContainer data={repos} />}
         {loading && <Spinner />}
       </div>
     </div>

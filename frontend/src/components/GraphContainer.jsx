@@ -3,7 +3,7 @@ import BarVariant from "./BarChart";
 import PieVariant from "./PieChart";
 import RadialVariant from "./RadialChart";
 
-export const GraphContainer = ({ stars, forks, repos }) => {
+export const GraphContainer = ({ data }) => {
   const [selectedChart, setSelectedChart] = useState("bar");
 
   return (
@@ -25,15 +25,9 @@ export const GraphContainer = ({ stars, forks, repos }) => {
 
       {/* Chart Display */}
       <div className="bg-gray-100 p-4 rounded-lg max-h-[360px] overflow-auto">
-        {selectedChart === "bar" && (
-          <BarVariant stars={stars} forks={forks} repos={repos} />
-        )}
-        {selectedChart === "pie" && (
-          <PieVariant stars={stars} forks={forks} repos={repos} />
-        )}
-        {selectedChart === "radial" && (
-          <RadialVariant stars={stars} forks={forks} repos={repos} />
-        )}
+        {selectedChart === "bar" && <BarVariant data={data} />}
+        {selectedChart === "pie" && <PieVariant data={data} />}
+        {selectedChart === "radial" && <RadialVariant data={data} />}
       </div>
     </div>
   );

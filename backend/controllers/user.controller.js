@@ -20,9 +20,9 @@ export const getUserProfileAndRepos = async (req, res) => {
     });
     const repos = await repoRes.json();
 
-    const { stars, forks } = await fetchGitHubStats(username);
+    // const { stars, forks } = await fetchGitHubStats(username);
 
-    res.status(200).json({ userProfile, repos, stars, forks  });
+    res.status(200).json({ userProfile, repos });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

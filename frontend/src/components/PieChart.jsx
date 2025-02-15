@@ -16,7 +16,7 @@ const COLORS = [
   "#f59e0b",
 ];
 
-const PieVariant = (data = { stars, forks, repos }) => {
+const PieVariant = ({data}) => {
   return (
     <ResponsiveContainer width="100%" height={350}>
       <PieChart>

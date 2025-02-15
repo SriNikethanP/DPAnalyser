@@ -7,7 +7,7 @@ import {
   Tooltip,
 } from "recharts";
 
-const BarVariant = (data = { stars, forks, repos }) => {
+const BarVariant = ({ data }) => {
   return (
     <ResponsiveContainer width="100%" height={350}>
       <BarChart data={data}>
